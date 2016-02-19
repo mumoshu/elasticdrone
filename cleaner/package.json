@@ -1,0 +1,40 @@
+{
+  "name": "elasticdrone_cleaner",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mumoshu/elasticdrone_cleaner.git"
+  },
+  "main": "src/cleanup.js",
+  "scripts": {
+    "start": "NODE_ENV=production NODE_PATH=node_modules node",
+    "locally": "gulp manager:build && node dist/cleanup.js",
+    "docker-run": "docker run -e DRONE_TOKEN=$DRONE_TOKEN -e STACK_NAME=$STACK_NAME -e AWS_ACCESS_KEY_ID=\"$AWS_ACCESS_KEY_ID\" -e AWS_SECRET_ACCESS_KEY=\"$AWS_SECRET_ACCESS_KEY\"",
+    "docker-build": "gulp manager:build && docker build .",
+    "sidenote": "gulp sidenote:build && node dist/sidenote.js"
+  },
+  "author": "Yusuke KUOKA",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.2.35",
+    "babel-polyfill": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "bluebird": "^3.3.1",
+    "co": "^4.6.0",
+    "dockerode": "^2.2.9",
+    "drone-node": "^1.0.1",
+    "moment": "^2.11.2",
+    "source-map-support": "^0.4.0",
+    "ssh2": "^0.4.13"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "gulp-util": "^3.0.7",
+    "gulp-webpack": "^1.5.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.12.13",
+    "webpack-node-externals": "^0.4.1"
+  }
+}
